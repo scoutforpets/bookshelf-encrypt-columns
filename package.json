@@ -1,6 +1,6 @@
 {
   "name": "bookshelf-encrypt-columns",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Automatically encrypt/decrypt database columns via Bookshelf.js",
   "main": "./dist/index.js",
   "options": {
