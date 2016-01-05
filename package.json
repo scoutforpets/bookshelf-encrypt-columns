@@ -44,5 +44,8 @@
   "engines": {
     "iojs": ">= 1.0.0",
     "node": ">= 0.10"
+  },
+  "dependencies": {
+    "lodash": "3.10.1"
   }
 }

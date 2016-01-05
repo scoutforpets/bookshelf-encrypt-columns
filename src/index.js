@@ -33,18 +33,23 @@ export default (Bookshelf, options) => {
         throw new Error('Invalid key: please specify a key.');
       }
 
-      // Encrypt specified columns on save.
-      this.on('saving', () => {
+      // Encrypt specified columns on create.
+      this.on('saving', (model, attrs, options) => {
         if (this.encryptedColumns) {
           _.forEach(this.encryptedColumns, (column) => {
             if (this.attributes[column]) {
-              this.attributes[column] = CryptoUtil.encrypt(cipherOptions.cipher, cipherOptions.key, this.attributes[column]);
+              const encrypted = CryptoUtil.encrypt(cipherOptions.cipher, cipherOptions.key, this.attributes[column]);
+              if (_.get(options, 'patch') == true) {
+                attrs[column] = encrypted;
+              } else {
+                this.attributes[column] = encrypted;
+              }
             }
           });
         }
       });
 
-      // Decrypt specified columns when fetching an individual record.
+      // Decrypt encrypted columns when fetching an individual record.
       this.on('fetched', () => {
         if (this.encryptedColumns) {
           _.forEach(this.encryptedColumns, (column) => {
@@ -55,7 +60,7 @@ export default (Bookshelf, options) => {
         }
       });
 
-      // Decrypt specified columns when fetching a collection of records.
+      // Decrypt encrypted columns when fetching a collection of records.
       this.on('fetched:collection', (collection) => {
         if (this.encryptedColumns) {
           _.forEach(this.encryptedColumns, (column) => {

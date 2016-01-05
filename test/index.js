@@ -168,6 +168,23 @@ describe('bookshelf-encrypt-columns', () => {
       });
     });
 
+    it('should encrypt the column on update when patch is true', async(done) => {
+      const model = await Model.forge().save();
+
+      await model.save({
+        secret: 'monkey'
+      }, {
+        patch: true
+      });
+
+      const encrypted = cryptoUtil.encrypt(cipher, key, 'monkey');
+
+      db.get('SELECT secret FROM test WHERE id = ?', model.get('id'), (err, row) => {
+        row.should.have.property('secret', encrypted);
+        done();
+      });
+    });
+
     it('should keep a null value on update', async() => {
       const model = await Model.forge().save();
 
