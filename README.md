@@ -1,6 +1,6 @@
 # bookshelf-encrypt-columns
 
-This [Bookshelf.js](https://github.com/tgriesser/bookshelf) plugin enables you to define which model columns are encrypted.
+This [Bookshelf.js](https://github.com/tgriesser/bookshelf) plugin enables you to define which model columns are encrypted on save/update. Those columns will also be automatically decrypted when fetched.
 
 ## Installation
 

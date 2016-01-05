@@ -1,7 +1,7 @@
 {
   "name": "bookshelf-encrypt-columns",
   "version": "0.0.1",
-  "description": "Automatically encrypt and decrypt columns with Bookshelf.js",
+  "description": "Automatically encrypt/decrypt database columns via Bookshelf.js",
   "main": "./dist/index.js",
   "options": {
     "mocha": "--compilers js:babel/register --bail test"
