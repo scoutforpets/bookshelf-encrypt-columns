@@ -1,4 +1,4 @@
-# bookshelf-encrypt-columns [![Build Status](https://travis-ci.org/scoutforpets/bookshelf-encrypt-columns.svg)](https://travis-ci.org/scoutforpets/bookshelf-encrypt-columns)
+# bookshelf-encrypt-columns [![Build Status](https://travis-ci.org/scoutfor pets/bookshelf-encrypt-columns.svg)](https://travis-ci.org/scoutforpets/bookshelf-encrypt-columns) [![Error Tracking](https://d26gfdfi90p7cf.cloudfront.net/rollbar-badge.144534.o.png)](https://rollbar.com)
 
 This [Bookshelf.js](https://github.com/tgriesser/bookshelf) plugin enables you to define which model columns are encrypted on save/update. Those columns will also be automatically decrypted when fetched.
 
